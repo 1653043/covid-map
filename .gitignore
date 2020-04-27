@@ -113,3 +113,7 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
+
+# Assignment submissions
+
+*.zip

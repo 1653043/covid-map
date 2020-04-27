@@ -48,7 +48,6 @@ const CovidDashboard = (props) => {
                     console.log("#p: ", patients.length);
                     sortPatientsByVerifyDateDesc(patients);
                     setPatients(patients);
-                    setCurrentMapPos({lat: result.data[0].lat, long: result.data[0].lng});
                     setCurrentPatient(result.data[0]);
                     setCurrentPatientIdx(0);
                 },
@@ -75,7 +74,7 @@ const CovidDashboard = (props) => {
     const patientMarkerClickedHandler = (patient, index) => {
         setCurrentPatient(patient);
         setCurrentPatientIdx(index);
-        setCurrentMapPos({lat: patient.lat, long: patient.lng})
+        setCurrentMapPos({lat: patient.lat || currentMapPos.lat, long: patient.lng || currentMapPos.long})
         patientRefs[index].scrollIntoView({behavior: 'smooth', block: 'start'});
     }
 
