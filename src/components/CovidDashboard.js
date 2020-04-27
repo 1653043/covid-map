@@ -45,7 +45,6 @@ const CovidDashboard = (props) => {
             .then(
                 (result) => {
                     let patients = prunePatientsOutsideTimeRange(result.data);
-                    console.log("#p: ", patients.length);
                     sortPatientsByVerifyDateDesc(patients);
                     setPatients(patients);
                     setCurrentPatient(result.data[0]);
