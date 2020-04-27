@@ -3,7 +3,7 @@ import {compose, withProps} from "recompose"
 import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow} from "react-google-maps"
 
 const CovidGoogleMap = ({onPatientMarkerClicked}) => {
-    console.log('Rendering CovidGoogleMap...');
+    // console.log('Rendering CovidGoogleMap...');
     const [patients, setPatients] = useState([]);
     useEffect(() => {
         fetch("https://maps.vnpost.vn/apps/covid19/api/patientapi/list")

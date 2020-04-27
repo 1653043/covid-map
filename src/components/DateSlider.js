@@ -9,7 +9,7 @@ import PauseIcon from '@material-ui/icons/Pause';
 import IconButton from '@material-ui/core/IconButton';
 
 const DateSlider = ({currentTime, isPlaying, onDateSliderChange, onPlayButtonPressed}) => {
-  console.log('Rendering DateSlider...');
+  // console.log('Rendering DateSlider...');
 
   const dateStart = new Date(2019, 11, 8).getTime();
   const dateNow = new Date().getTime();

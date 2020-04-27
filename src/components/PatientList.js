@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 const PatientList = ({currentPatientIdx, patients, patientRefs, onPatientMarkerClicked}) => {
-  console.log('Rendering PatientList...');
+  // console.log('Rendering PatientList...');
 
   return <ul className="patient-list" style={{overflow: 'auto', maxHeight: '300px'}}>
     {patients.map((patient, index) => (

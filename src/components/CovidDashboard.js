@@ -34,7 +34,7 @@ const CovidDashboard = (props) => {
     }
 
     const prunePatientsOutsideTimeRange = ((patients) => {
-        console.log("Filtering patient list");
+        // console.log("Filtering patient list");
         return patients.filter(inTimeRange)
         //return patients.filter((patient) => new Date(patient.verifyDate).getTime() > currentTime)
     })
@@ -65,7 +65,7 @@ const CovidDashboard = (props) => {
                     currentTime :
                     selectedTime + dayInMs;
                 setSelectedTime(newTime);
-                console.log("Updated current time");
+                // console.log("Updated current time");
             }, 100);
         }
     }, [isPlaying, selectedTime]);
@@ -85,7 +85,7 @@ const CovidDashboard = (props) => {
         setIsPlaying(!isPlaying);
     }
 
-    console.log('Covid Dashboard render');
+    // console.log('Covid Dashboard render');
     return <Container>
         <Row className="my-3" style={{maxHeight: '400px'}}>
             <Col xs={2} style={{maxHeight: '400px'}}>
