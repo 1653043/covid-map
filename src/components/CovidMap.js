@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const CovidMap = ({patients, currentMapPos, onPatientMarkerClicked}) => {
@@ -10,10 +10,10 @@ const CovidMap = ({patients, currentMapPos, onPatientMarkerClicked}) => {
         {patients.map((patient, index) => <Marker position={[patient.lat, patient.lng]} onClick={() => {onPatientMarkerClicked(patient, index); }}>
             <Popup>
                 <ul>
-                    <li>Name: {patient.name}</li>
-                    <li>Address: {patient.address}</li>
-                    <li>Note: {patient.note}</li>
-                    <li>Verify date: {patient.verifyDate}</li>
+                    <li key="name">Name: {patient.name}</li>
+                    <li key="address">Address: {patient.address}</li>
+                    <li key="note">Note: {patient.note}</li>
+                    <li key="verifyDate">Verify date: {patient.verifyDate}</li>
                 </ul>
             </Popup>
         </Marker>)}

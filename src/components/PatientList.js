@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 const PatientList = ({currentPatientIdx, patients, patientRefs, onPatientMarkerClicked}) => {
   // console.log('Rendering PatientList...');
 

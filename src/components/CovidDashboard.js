@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Card from 'react-bootstrap/Card'
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import CovidGoogleMap from "./CovidGoogleMap";
+// import CovidGoogleMap from "./CovidGoogleMap";
 import PatientInfo from "./PatientInfo";
 import PatientList from "./PatientList";
 import Container from "react-bootstrap/Container";
@@ -14,6 +14,7 @@ const CovidDashboard = (props) => {
     const [currentPatient, setCurrentPatient] = useState();
     const [currentMapPos, setCurrentMapPos] = useState({lat: 10.762887, long: 106.6800684});
     const [patients, setPatients] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [patientRefs, setPatientRefs] = useState([]);
     const [selectedTime, setSelectedTime] = useState(new Date(2019, 11, 8).getTime());
     const [isPlaying, setIsPlaying] = useState(false);
@@ -28,18 +29,18 @@ const CovidDashboard = (props) => {
         });
     });
 
-    function inTimeRange(patient) {
-        const patientTime = new Date(patient.verifyDate).getTime();
-        return patientTime <= selectedTime;
-    }
-
-    const prunePatientsOutsideTimeRange = ((patients) => {
-        // console.log("Filtering patient list");
-        return patients.filter(inTimeRange)
-        //return patients.filter((patient) => new Date(patient.verifyDate).getTime() > currentTime)
-    })
-
     useEffect(() => {
+        const inTimeRange = (patient) => {
+            const patientTime = new Date(patient.verifyDate).getTime();
+            return patientTime <= selectedTime;
+        }
+
+        const prunePatientsOutsideTimeRange = (patients) => {
+            // console.log("Filtering patient list");
+            return patients.filter(inTimeRange)
+            //return patients.filter((patient) => new Date(patient.verifyDate).getTime() > currentTime)
+        }
+
         fetch(`https://maps.vnpost.vn/apps/covid19/api/patientapi/list`)
             .then(res => res.json())
             .then(
@@ -68,7 +69,7 @@ const CovidDashboard = (props) => {
                 // console.log("Updated current time");
             }, 100);
         }
-    }, [isPlaying, selectedTime]);
+    }, [currentTime, isPlaying, selectedTime]);
 
     const patientMarkerClickedHandler = (patient, index) => {
         setCurrentPatient(patient);
@@ -92,9 +93,7 @@ const CovidDashboard = (props) => {
                 <Card>
                     <Card.Body>
                         <Card.Title>Patient list</Card.Title>
-                        <Card.Text>
                         <PatientList currentPatientIdx={currentPatientIdx} patients={patients} patientRefs={patientRefs} onPatientMarkerClicked={patientMarkerClickedHandler}></PatientList>
-                        </Card.Text>
                     </Card.Body>
                 </Card>
             </Col>

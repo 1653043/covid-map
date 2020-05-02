@@ -3,7 +3,6 @@ import { LineChart, Line, XAxis, YAxis, Legend, CartesianGrid, Tooltip, Responsi
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
 import Typography from '@material-ui/core/Typography';
 
 const CovidStats = (props) => {
@@ -11,10 +10,11 @@ const CovidStats = (props) => {
   const [WorldStats, setWorldStats] = useState();
 
   useEffect(() => {
-    console.log("Fetching data");
+    // Fetch VN stats from api
     fetch(`https://td.fpt.ai/corona/corona-chart-vn.json`)
       .then(res => res.json())  
       .then((result) => {
+        // Mutate {result} to match recharts' data format
         let vnData = [];
         for (let [key, value] of Object.entries(result)) {
           const date = key.substring(5);
@@ -22,9 +22,11 @@ const CovidStats = (props) => {
         }
         setVNStats(vnData);
       });
+    // Fetch world stats from api
     fetch(`https://td.fpt.ai/corona/corona-total.json`)
       .then(res => res.json())
       .then((result) => {
+        // Mutate {result} to match recharts' data format
         let worldData = [];
         for (let [key, value] of Object.entries(result)) {
           worldData.push({date: key, ...value});

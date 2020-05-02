@@ -5,6 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 require('./mocks');
 
+console.log("base url: ", process.env.PUBLIC_URL);
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
