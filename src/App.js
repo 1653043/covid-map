@@ -44,7 +44,7 @@ const App =() => [
                     </div>
                     <CovidDashboard/>
                 </Route>
-                <Route path="stats" exact>
+                <Route path="/stats" exact>
                     <div className="my-2" style={{fontSize: 40, textAlign: "center"}}>
                         <p>Covid Stats</p>
                     </div>

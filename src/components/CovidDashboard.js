@@ -40,7 +40,7 @@ const CovidDashboard = (props) => {
     })
 
     useEffect(() => {
-        fetch("https://maps.vnpost.vn/apps/covid19/api/patientapi/list")
+        fetch(`https://maps.vnpost.vn/apps/covid19/api/patientapi/list`)
             .then(res => res.json())
             .then(
                 (result) => {
