@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Typography from '@material-ui/core/Typography';
 
 import {
     BrowserRouter as Router,
@@ -39,14 +40,14 @@ const App =() => [
                     <Redirect to="/map"/>
                 </Route>
                 <Route path="/map" exact>
-                    <div className="my-2" style={{fontSize: 40, textAlign: "center"}}>
-                        <p>Covid Map</p>
+                    <div className="my-2">
+                        <Typography align="center" variant="h2">Covid Map</Typography>
                     </div>
                     <CovidDashboard/>
                 </Route>
                 <Route path="/stats" exact>
-                    <div className="my-2" style={{fontSize: 40, textAlign: "center"}}>
-                        <p>Covid Stats</p>
+                    <div className="my-2">
+                        <Typography align="center" variant="h2">Covid Stats</Typography>
                     </div>
                     <CovidStats/>
                 </Route>
