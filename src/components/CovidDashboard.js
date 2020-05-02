@@ -19,7 +19,6 @@ const CovidDashboard = (props) => {
     const [selectedTime, setSelectedTime] = useState(new Date(2019, 11, 8).getTime());
     const [isPlaying, setIsPlaying] = useState(false);
     const dayInMs = 86400000; // 1 day converted to milliseconds
-    const currentTime = new Date().getTime();
 
     const sortPatientsByVerifyDateDesc = ((patients) => {
         patients.sort((p1, p2) => {
@@ -38,9 +37,8 @@ const CovidDashboard = (props) => {
         const prunePatientsOutsideTimeRange = (patients) => {
             // console.log("Filtering patient list");
             return patients.filter(inTimeRange)
-            //return patients.filter((patient) => new Date(patient.verifyDate).getTime() > currentTime)
         }
-
+        
         fetch(`https://maps.vnpost.vn/apps/covid19/api/patientapi/list`)
             .then(res => res.json())
             .then(
@@ -60,6 +58,7 @@ const CovidDashboard = (props) => {
                 }
             );
         if (isPlaying) {
+            const currentTime = new Date().getTime();
             setTimeout(() => {
                 const newTime =
                     selectedTime + dayInMs > currentTime ?
@@ -69,7 +68,7 @@ const CovidDashboard = (props) => {
                 // console.log("Updated current time");
             }, 100);
         }
-    }, [currentTime, isPlaying, selectedTime]);
+    }, [isPlaying, selectedTime]);
 
     const patientMarkerClickedHandler = (patient, index) => {
         setCurrentPatient(patient);
